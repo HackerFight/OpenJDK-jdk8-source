@@ -53,11 +53,13 @@ inline void OrderAccess::release() {
 }
 
 inline void OrderAccess::fence() {
+  //TODO:如果是多核
   if (os::is_MP()) {
     // always use locked addl since mfence is sometimes expensive
 #ifdef AMD64
     __asm__ volatile ("lock; addl $0,0(%%rsp)" : : : "cc", "memory");
 #else
+    //TODO: lock addl ... 汇编码
     __asm__ volatile ("lock; addl $0,0(%%esp)" : : : "cc", "memory");
 #endif
   }

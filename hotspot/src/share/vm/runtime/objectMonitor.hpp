@@ -144,13 +144,13 @@ class ObjectMonitor {
     _recursions   = 0;
     _object       = NULL;
     _owner        = NULL;
-    _WaitSet      = NULL;
+    _WaitSet      = NULL;  //TODO:waitSet,里面存放的都是wait的线程
     _WaitSetLock  = 0 ;
     _Responsible  = NULL ;
     _succ         = NULL ;
     _cxq          = NULL ;
     FreeNext      = NULL ;
-    _EntryList    = NULL ;
+    _EntryList    = NULL ;  //TODO:entryList：锁竞争激烈的情况下，把没有争取到锁的线程放入这里
     _SpinFreq     = 0 ;
     _SpinClock    = 0 ;
     OwnerIsThread = 0 ;
